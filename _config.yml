@@ -21,11 +21,7 @@
 title: WATER
 email: gaukas.wang@colorado.edu
 description: >- # this means to ignore newlines until "baseurl:"
-  A comprehensive documentation site for the Water project. Find all the information 
-  you need about Water, including tutorials, guides, and reference documentation. Dive 
-  into the world of Water and explore its features, use cases, and best practices. 
-  Stay updated with the latest news and announcements related to Water. Start your 
-  journey with Water today!"
+  WebAssembly Transport Executables Runtime
 theme: just-the-docs
 url: "" # the base hostname & protocol for your site, e.g. http://example.com
 
