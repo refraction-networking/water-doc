@@ -33,3 +33,31 @@ plugins:
 exclude:
   - LICENSE
   - README.md
+
+aux_links:
+  Refraction Networking: "https://refraction.network/"
+  FOCI 2024 Paper: "https://www.petsymposium.org/foci/2024/foci-2024-0003.php"
+
+# External navigation links
+nav_external_links:
+  - title: refraction-networking/water
+    url: https://github.com/refraction-networking/water
+  - title: refraction-networking/water-rs
+    url: https://github.com/refraction-networking/water-rs
+
+callouts_level: quiet # or loud
+callouts:
+  highlight:
+    color: yellow
+  important:
+    title: Important
+    color: blue
+  new:
+    title: New
+    color: green
+  note:
+    title: Note
+    color: purple
+  warning:
+    title: Warning
+    color: red
