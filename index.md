@@ -7,6 +7,8 @@ layout: home
 
 -- **WATER** -- <br> **W**eb**A**ssembly **T**ransport **E**xecutables **R**untime
 {: .fs-8}
+{: .fw-300}
+{: .text-grey-dk-300}
 {: .text-center}
 
 
