@@ -5,7 +5,12 @@
 layout: home
 ---
 
-# WATER: WebAssembly Transport Executables Runtime
+-- **WATER** -- <br> **W**eb**A**ssembly **T**ransport **E**xecutables **R**untime
+{: .fs-8}
+{: .fw-300}
+{: .text-grey-dk-300}
+{: .text-center}
+
 
 This site hosts the online documentation for Project WATER: [refraction-networking/water](https://github.com/refraction-networking/water) and [refraction-networking/water-rs](https://github.com/refraction-networking/water-rs). 
 
