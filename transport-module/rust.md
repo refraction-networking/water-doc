@@ -1,6 +1,6 @@
 ---
 layout: default
-title: WebAssembly Transport Module in Rust
+title: WATM in Rust
 parent: WebAssembly Transport Module
 nav_order: 2
 ---
