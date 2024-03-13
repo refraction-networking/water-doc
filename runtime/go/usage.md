@@ -16,7 +16,7 @@ as well.
 
 ```go
 import (
-    "github.com/refraction-networking/water"
+	"github.com/refraction-networking/water"
 	_ "github.com/refraction-networking/water/transport/v0" // import the v0 transport module spec
 )
 ```
