@@ -46,9 +46,11 @@ To help developers understand the API, we provide the following representations 
 
 <details>
     <summary>Imports</summary>
-    
-```go
-//go:wasmimport env host_dial
+
+<div class="highlighter-rouge">
+<div class="highlight">
+<pre class="highlight">
+<code>//go:wasmimport env host_dial
 //go:noescape
 func _import_host_dial() (fd int32)
 
@@ -62,15 +64,19 @@ func _import_pull_config() (fd int32)
 
 //go:wasmimport env host_defer
 //go:noescape
-func _import_host_defer()
-```
+func _import_host_defer()</code>
+</pre>
+</div>
+</div>
 </details>
 
 <details>
     <summary>Exports</summary>
 
-```go
-//export _water_v0
+<div class="highlighter-rouge">
+<div class="highlight">
+<pre class="highlight">
+<code>//export _water_v0
 func _water_v0()
 
 //export _water_init
@@ -89,8 +95,10 @@ func _water_accept(internalFd int32) (networkFd int32)
 func _water_associate() int32
 
 //export _water_worker
-func _water_worker() int32
-```
+func _water_worker() int32</code>
+</pre>
+</div>
+</div>
 </details>
 
 ### Rust representation
@@ -104,8 +112,10 @@ _Note that the following is a simplified example and may not strictly follow the
 <details>
   <summary>Imports</summary>
 
-```wit
-// imports.wit
+<div class="highlighter-rouge">
+<div class="highlight">
+<pre class="highlight">
+<code>// imports.wit
 package env;
 
 interface host {
@@ -117,14 +127,19 @@ interface host {
 
 world host-world {
     import host;
-}
-```
+}</code>
+</pre>
+</div>
+</div>
 </details>
 
 <details>
   <summary>Exports</summary>
 
-```wit
+<div class="highlighter-rouge">
+<div class="highlight">
+<pre class="highlight">
+<code>
 // exports.wit
 interface wasm {
     _water_v0: func(); // version 0 identifier
@@ -138,6 +153,8 @@ interface wasm {
 
 world wasm-world {
     export wasm;
-}
-```
+}</code>
+</pre>
+</div>
+</div>
 </details>
