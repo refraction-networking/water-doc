@@ -27,20 +27,16 @@ import (
 Dialer acts like a client. It actively creates connections to a remote server (and usually is the one who sends the first message). 
 
 ```go
-// ...
+// Load the WebAssembly binary into wasm as []byte.
+// The rest of the code on this page assumes that wasm is already loaded.
+wasm, _ := os.ReadFile("./examples/v0/plain/plain.wasm")
 
-    // Load the WebAssembly binary into wasm as []byte.
-    // The rest of the code on this page assumes that wasm is already loaded.
-	wasm, _ := os.ReadFile("./examples/v0/plain/plain.wasm")
+config := &water.Config{
+	TransportModuleBin: wasm,
+}
 
-	config := &water.Config{
-		TransportModuleBin: wasm,
-	}
-
-	dialer, _ := water.NewDialerWithContext(context.Background(), config)
-	conn, _ := dialer.DialContext(context.Background(),"tcp", remoteAddr)
-
-// ...
+dialer, _ := water.NewDialerWithContext(context.Background(), config)
+conn, _ := dialer.DialContext(context.Background(),"tcp", remoteAddr)
 ```
 
 ### Listener
@@ -48,14 +44,14 @@ Listener acts like a server. It listens on a network address and wait for
 incoming connections to accept. 
 
 ```go
-	lis, _ := config.ListenContext(context.Background(), "tcp", localAddr)
-	defer lis.Close()
-	log.Printf("Listening on %s", lis.Addr().String())
+lis, _ := config.ListenContext(context.Background(), "tcp", localAddr)
+defer lis.Close()
+log.Printf("Listening on %s", lis.Addr().String())
 
-	for {
-		conn, err := lis.Accept()
-		handleConn(conn)
-	}
+for {
+	conn, err := lis.Accept()
+	handleConn(conn)
+}
 ```
 
 ### Relay
@@ -64,7 +60,6 @@ like a forward proxy, accepting connections from a client and forwarding them to
 remote server by dialing a connection to the remote server.
 
 ```go
-	relay, _ := water.NewRelayWithContext(context.Background(), config)
-
-	relay.ListenAndRelayTo("tcp", localAddr, "tcp", remoteAddr) // blocking
+relay, _ := water.NewRelayWithContext(context.Background(), config)
+relay.ListenAndRelayTo("tcp", localAddr, "tcp", remoteAddr) // blocking
 ```
