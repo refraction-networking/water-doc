@@ -28,3 +28,7 @@ Currently, `water` supports the following platforms:
 | others             | ❓        | ❓         |
 
 Due to the absence of a machine in `windows/arm64`, we could not run tests on this platform. The compilation compatibility is tested by cross-compiling from `windows/amd64` to `windows/arm64`. 
+
+## Mobile Platform Support
+
+We are working on [WaterMob](https://github.com/gaukas/watermob) to bring `water` to mobile platforms. Currently, it is still in the early stage of development. 
