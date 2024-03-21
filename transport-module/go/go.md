@@ -21,4 +21,4 @@ To see a quick example of how to build a WATM in Go, see [WATM in Go Quick Start
 
 We provide a helper library you can use to build WATM from WebAssembly-agnostic Go code. By using this helper, only a simple intermediate layer is needed to be implemented in order to integrate existing transport written in Go with WATM.
 
-See [WATM Builder Helper in Go](./go/watm.html) for more details.
+See [WATM Builder Helper in Go](./go/watm.html) for more details, and see [WATM in Go Quick Start](./go/quick-start.html) for a quick example of using the helper to build a WATM that reverses strings.
