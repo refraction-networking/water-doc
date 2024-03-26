@@ -7,7 +7,6 @@ nav_order: 1
 ---
 
 # Quick Start
-
 This guide walks you through the process of building a simple WebAssembly transport module in Go with TinyGo, with the helper libraries provided by Project WATER.
 
 ## Prerequisites
@@ -28,11 +27,9 @@ package main
 import (
 	"io"
 
-	v0 "github.com/refraction-networking/watm/tinygo/v0"
-	v0net "github.com/refraction-networking/watm/tinygo/v0/net"
+	v0 "github.com/refraction-networking/watm/tinygo/v0" // import the v0 transport module spec
+	v0net "github.com/refraction-networking/watm/tinygo/v0/net" // substitute the standard net package with WebAssembly-specific implementation
 )
-
-var dupBuf []byte = make([]byte, 4096) // 4KB buffer for reversing
 
 // type guard: ReverseWrappingTransport must implement [v0.WrappingTransport].
 var _ v0.WrappingTransport = (*ReverseWrappingTransport)(nil)
@@ -57,40 +54,42 @@ func main() {}
 type ReverseWrappingTransport struct {
 }
 
+// Wrap implements the v0.WrappingTransport interface
 func (rwt *ReverseWrappingTransport) Wrap(conn v0net.Conn) (v0net.Conn, error) {
 	return &ReverseConn{conn}, conn.SetNonBlock(true) // must set non-block, otherwise will block on read and lose fairness
 }
 
+// ReverseConn should implement the v0net.Conn interface
 type ReverseConn struct {
 	v0net.Conn // embedded Conn
 }
 
+// Read implements the v0net.Conn interface
 func (rc *ReverseConn) Read(b []byte) (n int, err error) {
-	n, err = rc.Conn.Read(dupBuf)
+	tmpBuf := make([]byte, len(b))
+	n, err = rc.Conn.Read(tmpBuf)
 	if err != nil {
 		return 0, err
 	}
 
-	if n > len(b) {
-		err = io.ErrShortBuffer
-		n = len(b)
-	}
-
 	// reverse all bytes read successfully so far
 	for i := 0; i < n; i++ {
-		b[i] = dupBuf[n-i-1]
+		b[i] = tmpBuf[n-i-1]
 	}
 
 	return n, err
 }
 
+// Write implements the v0net.Conn interface
 func (rc *ReverseConn) Write(b []byte) (n int, err error) {
+	tmpBuf := make([]byte, len(b))
+
 	// reverse the bytes to be written
 	for i := 0; i < len(b); i++ {
-		dupBuf[i] = b[len(b)-i-1]
+		tmpBuf[i] = b[len(b)-i-1]
 	}
 
-	return rc.Conn.Write(dupBuf)
+	return rc.Conn.Write(tmpBuf[:len(b)])
 }
 ```
 
