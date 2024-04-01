@@ -61,3 +61,9 @@ callouts:
   warning:
     title: Warning
     color: red
+  
+defaults:
+  - scope:
+      path: "assets/img"
+    values:
+      image: true

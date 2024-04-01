@@ -2,6 +2,7 @@
 layout: page
 title: Comparisons
 permalink: /comparisons.html
+nav_order: 1
 ---
 
 # Comparisons

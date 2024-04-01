@@ -1,7 +1,7 @@
 ---
 layout: default
 title: WebAssembly Transport Module
-nav_order: 2
+nav_order: 4
 has_children: true
 permalink: /transport-module.html
 ---
