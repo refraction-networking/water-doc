@@ -44,6 +44,8 @@ nav_external_links:
     url: https://github.com/refraction-networking/water
   - title: refraction-networking/water-rs
     url: https://github.com/refraction-networking/water-rs
+  - title: Discussion + Q&A
+    url: https://github.com/refraction-networking/water-doc/discussions
 
 callouts_level: quiet # or loud
 callouts:
