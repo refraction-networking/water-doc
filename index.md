@@ -34,3 +34,7 @@ The ultimate goal of WATER is to provide familiar network programming interfaces
 With a WebAssembly Transport Module (WATM), WATER can be configured for either client-side or server-side applications as it provides both dialer and listener implementations. It is worth noting that a WATM may be written in a way to support either client-side or server-side applications, or both. Please consult the provider of the WATM for more information.
 
 The architecture of WATER, especially how WATER is built, is available [here](architecture.html).
+
+## Contacts & Get involved
+
+WATER is a joint project with researchers from the University of Michigan and the University of Colorado Boulder. If you’d like to find out more or help support our efforts, please contact us at [team@refraction.network](mailto:team@refraction.network) or join the discussion panel we host [here](https://github.com/refraction-networking/water-doc/discussions).
